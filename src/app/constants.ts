@@ -1,1 +1,1 @@
-export const API = "http://ec2-13-233-36-166.ap-south-1.compute.amazonaws.com:8086/";
+export const API = "http://review-community-api-production.up.railway.app/";

@@ -1,6 +1,7 @@
 
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { API } from "../constants";
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http
 export class ProductService {
    
 
-    api = "http://ec2-13-233-36-166.ap-south-1.compute.amazonaws.com:8086/products";
+    api = API  + "products";
 
     constructor(private http: HttpClient) { }
 
