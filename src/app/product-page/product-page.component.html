@@ -1,0 +1,68 @@
+<nav class="navbar fixed-top bg-dark">
+    <button type="button" class="btn btn-primary m-2 myPrim" (click)="logout()">Logout</button>
+</nav>
+
+
+<section class="vh-100 ">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-white bg-dark card-op" style="border-radius: 25px;">
+                    <div class="card-body p-md-3">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                <p class="text-center h1 fw-bold mx-1 mx-md-4 mt-4">{{product.name.toUpperCase()}}</p>
+                                <p class="text-center h5 mx-1 mx-md-4" style="color: #c4c4c4;">Product code :
+                                    {{product.code}}
+                                </p>
+                                <p class="text-center h5 mb-5 mx-1 mx-md-4" style="color: #c4c4c4;">Product brand :
+                                    {{product.brand}}</p>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="reviews.length != 0">
+                            <p class="text-center h1 fw-bold  mt-4">Reviews
+                            </p>
+                            <div class="container text-center p-md-3">
+                                <div class="row h5">
+                                    <div class="col">
+                                        Heading
+                                    </div>
+                                    <div class="col">
+                                        Comment
+                                    </div>
+                                    <div class="col">
+                                        Rating
+                                    </div>
+                                    <div class="col" *ngIf="isAdmin">
+                                        Action
+                                    </div>
+                                </div>
+
+                                <div class="row py-2" *ngFor="let item of reviews">
+                                    <div class="col">{{item.heading}}</div>
+                                    <div class="col">{{item.text}}</div>
+                                    <div class="col">{{item.rating}}</div>
+                                    <div class="col" *ngIf="isAdmin">
+                                        <button type="button" class="btn btn-danger" (click)="delete(item.id)"
+                                            *ngIf="item.approved">Delete</button>
+                                        <button type="button" class="btn btn-info" (click)="approve(item.id)"
+                                            *ngIf="item.approved == false">Approve</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="reviews.length == 0">
+                            <p class="text-center h1 fw-bold mx-1 mx-md-4 mt-4">No 
+                                reviews
+                            </p>
+                            <div class="row justify-content-center"><button type="submit" class="btn btn-info btn-lg"
+                                    style="border-radius: 30px;" (click)="addReview(prodCode)">Add review</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

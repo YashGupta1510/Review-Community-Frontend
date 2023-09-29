@@ -1,0 +1,60 @@
+<nav class="navbar bg-dark">
+    <button type="button" class="btn btn-primary m-2 myPrim" (click)="logout()">Logout</button>
+</nav>
+
+<div class="card justify-content-center" style="margin: 5vw; margin-top: 2vw;" *ngIf="reviewsApproved.length != 0">
+    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style="color: white;">Approved Reviews</p>
+    <table class="table mt-3">
+        <thead class="thead">
+            <tr>
+                <th scope="col">Product Code</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Comment</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let review of reviewsApproved">
+
+                <td>{{review.code}}</td>
+                <td>{{review.heading}}</td>
+                <td>{{review.text}}</td>
+                <td>{{review.rating}}</td>
+                <td>
+                    <button class="btn btn-info m-1" (click)="delete(review.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style="color: white;">Reviews Waiting</p>
+    <table class="table mt-3">
+        <thead class="thead">
+            <tr>
+                <th scope="col">Product Code</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Comment</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Approve</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let review of reviewsWaiting">
+
+                <td>{{review.code}}</td>
+                <td>{{review.heading}}</td>
+                <td>{{review.text}}</td>
+                <td>{{review.rating}}</td>
+                <td>
+                    <button class="btn btn-info m-1" (click)="approve(review.id)">Approve</button>
+                </td>
+                <td>
+                    <button class="btn btn-info m-1" (click)="delete(review.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
